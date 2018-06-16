@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class joke_viewer extends AppCompatActivity {
+public class JokeViewer extends AppCompatActivity {
 
     TextView textView;
     @Override
@@ -15,9 +15,11 @@ public class joke_viewer extends AppCompatActivity {
         setContentView(R.layout.activity_joke_viewer);
 
         Intent intent = getIntent();
-        String value = intent.getStringExtra("joke");
-        textView= (TextView) findViewById(R.id.textView);
-        textView.setText(value);
-        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+        if(intent.hasExtra("joke")) {
+            String value = intent.getStringExtra("joke");
+            textView = (TextView) findViewById(R.id.textView);
+            textView.setText(value);
+            Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+        }
     }
 }
